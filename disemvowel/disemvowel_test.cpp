@@ -3,15 +3,21 @@
 #include "disemvowel.h"
 
 TEST(Disemvowel, HandleEmptyString) {
-  ASSERT_STREQ("", disemvowel((char*) ""));
+	        char *str = disemvowel(((char*) ""));
+  ASSERT_STREQ("", str);
+  free(str);
 }
 
 TEST(Disemvowel, HandleNoVowels) {
-  ASSERT_STREQ("pqrst", disemvowel((char*) "pqrst"));
+	char *str = disemvowel(((char*) "pqrst"));
+  ASSERT_STREQ("pqrst", str);
+	free(str);
 }
 
 TEST(Disemvowel, HandleOnlyVowels) {
-  ASSERT_STREQ("", disemvowel((char*) "aeiouAEIOUOIEAuoiea"));
+	char *str = disemvowel(((char*) "aeiouAEIOUOIEAuoiea"));
+  ASSERT_STREQ("",str);
+  free(str);
 }
 
 TEST(Disemvowel, HandleMorrisMinnesota) {
@@ -38,8 +44,9 @@ TEST(Disemvowel, HandleLongString) {
     str[i] = 'a';
   }
   str[size-1] = '\0';
-  
-  ASSERT_STREQ("xyz", disemvowel(str));
+ char *disemvowelstr = disemvowel((str)); 
+  ASSERT_STREQ("xyz", disemvowelstr);
+ free(disemvowelstr);
 
   free(str);
 }

@@ -10,7 +10,12 @@ int main(int argc, char *argv[]) {
   size = 100;
   line = (char*) malloc (size + 1);
 
+
+
   while (getline(&line, &size, stdin) > 0) {
-    printf("%s\n", disemvowel(line));
+	  char *str = disemvowel(line);
+    printf(str);
+	  free(str);
   }
+  free(line);
 }
